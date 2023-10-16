@@ -5,11 +5,15 @@ module.exports = withModuleFederationPlugin({
   name: 'mf-shopping',
 
   exposes: {
-    './Component': './src/app/app.component.ts',
+    // Alias : Direccion del module
+    './ProductsModule': './src/app/products/products.module.ts',
   },
 
   shared: {
-    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+    ...shareAll({ 
+      singleton: true, 
+      strictVersion: true, requiredVersion: 'auto' 
+    }),
   },
 
 });
