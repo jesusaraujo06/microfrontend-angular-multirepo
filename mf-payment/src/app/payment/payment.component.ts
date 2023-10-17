@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ICommonProduct } from '@commons-lib';
+
+export interface ICommonProduct {
+  price: number;
+  name: string;
+}
+
 @Component({
   standalone: true,
   selector: 'app-payment',
@@ -8,6 +13,7 @@ import { ICommonProduct } from '@commons-lib';
   styleUrls: ['./payment.component.scss'],
   imports: [CommonModule],
 })
+
 export class PaymentComponent implements OnInit {
   constructor() {}
 

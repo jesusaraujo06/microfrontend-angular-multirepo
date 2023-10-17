@@ -1,6 +1,6 @@
 const { shareAll, withModuleFederationPlugin } = require('@angular-architects/module-federation/webpack');
 
-module.exports = withModuleFederationPlugin({
+const moduleFederationConfig = withModuleFederationPlugin({
 
   remotes: {
     // Microfrontends que va a hospedar el shell
@@ -15,3 +15,7 @@ module.exports = withModuleFederationPlugin({
   },
 
 });
+
+moduleFederationConfig.output.publicPath = 'http://localhost:4200/'
+
+module.exports = moduleFederationConfig;

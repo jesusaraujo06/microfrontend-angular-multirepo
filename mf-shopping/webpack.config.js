@@ -1,6 +1,6 @@
 const { shareAll, withModuleFederationPlugin } = require('@angular-architects/module-federation/webpack');
 
-module.exports = withModuleFederationPlugin({
+const moduleFederationConfig = withModuleFederationPlugin({
 
   name: 'mf-shopping',
 
@@ -17,3 +17,8 @@ module.exports = withModuleFederationPlugin({
   },
 
 });
+
+// Para corregir el error import.meta, con esto se le dice al navegador desde donde se estan desplegando los assets utilizados por este MF.
+moduleFederationConfig.output.publicPath = 'http://localhost:4201/';
+
+module.exports = moduleFederationConfig;
