@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import PubSub from 'pubsub-js';
 
 interface ICommonProduct {
   price: number;
@@ -13,5 +14,13 @@ interface ICommonProduct {
 export class AppComponent {
   count = 0;
   private _products: ICommonProduct[] = [];
+
+  ngOnInit():void {
+    PubSub.subscribe('products', (_message, data) => {
+      this._products.push(data as unknown as ICommonProduct);
+      this.count++;
+      localStorage.setItem('products', JSON.stringify(this._products));
+    })
+  }
   
 }
